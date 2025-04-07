@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6ee89b7e930b47ce82113f9ce5a1688e" Name="Diagram1" ZoomLevel="94">
+        <EntityTypeShape EntityType="OtelYonetimiDbModel.Departmanlar" Width="1.5" PointX="3.125" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="OtelYonetimiDbModel.EksikMesaiKayitlari" Width="1.5" PointX="7.5" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="OtelYonetimiDbModel.IzinKayitlari" Width="1.5" PointX="7.5" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="OtelYonetimiDbModel.IzinTurleri" Width="1.5" PointX="5.375" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OtelYonetimiDbModel.Kategoriler" Width="1.5" PointX="3.625" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OtelYonetimiDbModel.Maaslar" Width="1.5" PointX="7.5" PointY="16.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="OtelYonetimiDbModel.Menuler" Width="1.5" PointX="10.625" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OtelYonetimiDbModel.MesaiKayitlari" Width="1.5" PointX="10.5" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="OtelYonetimiDbModel.MesaiTurleri" Width="1.5" PointX="10.375" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="OtelYonetimiDbModel.Misafirs" Width="1.5" PointX="5.625" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OtelYonetimiDbModel.Odalar" Width="1.5" PointX="3.25" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="OtelYonetimiDbModel.Personel" Width="1.5" PointX="5.25" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="OtelYonetimiDbModel.PersonelVardiyalari" Width="1.5" PointX="10.5" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="OtelYonetimiDbModel.Pozisyonlar" Width="1.5" PointX="3.25" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OtelYonetimiDbModel.Rezervasyons" Width="1.5" PointX="3.625" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="OtelYonetimiDbModel.SigortaBilgileri" Width="1.5" PointX="3.25" PointY="17.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="OtelYonetimiDbModel.Urunler" Width="1.5" PointX="5.875" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="OtelYonetimiDbModel.VardiyaTurleri" Width="1.5" PointX="8.25" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OtelYonetimiDbModel.Yemek_Hazirlama" Width="1.5" PointX="8.25" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="OtelYonetimiDbModel.Yemek_Malzemeleri" Width="1.5" PointX="8.375" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OtelYonetimiDbModel.Yemekler" Width="1.5" PointX="10.875" PointY="2.25" IsExpanded="true" />
+        <AssociationConnector Association="OtelYonetimiDbModel.FK__Pozisyonl__Depar__17036CC0" ManuallyRouted="false" />
+        <AssociationConnector Association="OtelYonetimiDbModel.FK__EksikMesa__Perso__0E6E26BF" ManuallyRouted="false" />
+        <AssociationConnector Association="OtelYonetimiDbModel.FK__IzinKayit__IzinT__0F624AF8" ManuallyRouted="false" />
+        <AssociationConnector Association="OtelYonetimiDbModel.FK__IzinKayit__Perso__10566F31" ManuallyRouted="false" />
+        <AssociationConnector Association="OtelYonetimiDbModel.FK__Urunler__kategor__693CA210" ManuallyRouted="false" />
+        <AssociationConnector Association="OtelYonetimiDbModel.FK__Maaslar__Persone__114A936A" ManuallyRouted="false" />
+        <AssociationConnector Association="OtelYonetimiDbModel.FK__Menuler__yemek_i__68487DD7" ManuallyRouted="false" />
+        <AssociationConnector Association="OtelYonetimiDbModel.FK__MesaiKayi__Mesai__123EB7A3" ManuallyRouted="false" />
+        <AssociationConnector Association="OtelYonetimiDbModel.FK__MesaiKayi__Perso__1332DBDC" ManuallyRouted="false" />
+        <AssociationConnector Association="OtelYonetimiDbModel.FK_Rezervasyons_Misafirs" ManuallyRouted="false" />
+        <AssociationConnector Association="OtelYonetimiDbModel.FK_Rezervasyons_Odalar" ManuallyRouted="false" />
+        <AssociationConnector Association="OtelYonetimiDbModel.FK__Personel__Pozisy__14270015" ManuallyRouted="false" />
+        <AssociationConnector Association="OtelYonetimiDbModel.FK__PersonelV__Perso__151B244E" ManuallyRouted="false" />
+        <AssociationConnector Association="OtelYonetimiDbModel.FK__SigortaBi__Perso__17F790F9" ManuallyRouted="false" />
+        <AssociationConnector Association="OtelYonetimiDbModel.FK__PersonelV__Vardi__160F4887" ManuallyRouted="false" />
+        <AssociationConnector Association="OtelYonetimiDbModel.FK__Yemek_Mal__urun___6B24EA82" ManuallyRouted="false" />
+        <AssociationConnector Association="OtelYonetimiDbModel.FK__Yemek_Haz__yemek__6A30C649" ManuallyRouted="false" />
+        <AssociationConnector Association="OtelYonetimiDbModel.FK__Yemek_Mal__yemek__6C190EBB" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

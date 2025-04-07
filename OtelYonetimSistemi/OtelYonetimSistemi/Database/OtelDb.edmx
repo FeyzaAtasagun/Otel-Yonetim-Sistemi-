@@ -1,0 +1,1417 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="OtelYonetimiDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Departmanlar">
+          <Key>
+            <PropertyRef Name="DepartmanID" />
+          </Key>
+          <Property Name="DepartmanID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DepartmanAdi" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EksikMesaiKayitlari">
+          <Key>
+            <PropertyRef Name="EksikMesaiID" />
+          </Key>
+          <Property Name="EksikMesaiID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PersonelID" Type="int" />
+          <Property Name="EksikMesaiTarihi" Type="date" Nullable="false" />
+          <Property Name="EksikSure" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="KesilisTutari" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Aciklama" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="IzinKayitlari">
+          <Key>
+            <PropertyRef Name="IzinID" />
+          </Key>
+          <Property Name="IzinID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PersonelID" Type="int" />
+          <Property Name="IzinTurID" Type="int" />
+          <Property Name="BaslangicTarihi" Type="date" Nullable="false" />
+          <Property Name="BitisTarihi" Type="date" Nullable="false" />
+          <Property Name="IzinGunSayisi" Type="int" Nullable="false" />
+          <Property Name="OnayDurumu" Type="nvarchar" MaxLength="20" />
+          <Property Name="Aciklama" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="IzinTurleri">
+          <Key>
+            <PropertyRef Name="IzinTurID" />
+          </Key>
+          <Property Name="IzinTurID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IzinTurAdi" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UcretliMi" Type="bit" />
+        </EntityType>
+        <EntityType Name="Kategoriler">
+          <Key>
+            <PropertyRef Name="kategori_id" />
+          </Key>
+          <Property Name="kategori_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="kategori_adi" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Maaslar">
+          <Key>
+            <PropertyRef Name="MaasID" />
+          </Key>
+          <Property Name="MaasID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PersonelID" Type="int" />
+          <Property Name="BrutMaas" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="NetMaas" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="MaasAyi" Type="int" Nullable="false" />
+          <Property Name="MaasYili" Type="int" Nullable="false" />
+          <Property Name="OdemeTarihi" Type="date" />
+          <Property Name="Aciklama" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Menuler">
+          <Key>
+            <PropertyRef Name="menu_id" />
+          </Key>
+          <Property Name="menu_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tarih" Type="datetime" />
+          <Property Name="yemek_id" Type="int" Nullable="false" />
+          <Property Name="ogun_turu" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MesaiKayitlari">
+          <Key>
+            <PropertyRef Name="MesaiID" />
+          </Key>
+          <Property Name="MesaiID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PersonelID" Type="int" />
+          <Property Name="MesaiTurID" Type="int" />
+          <Property Name="MesaiTarihi" Type="date" Nullable="false" />
+          <Property Name="BaslangicSaati" Type="time" Precision="7" Nullable="false" />
+          <Property Name="BitisSaati" Type="time" Precision="7" Nullable="false" />
+          <Property Name="MesaiSuresi" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="MesaiUcreti" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Onaylandi" Type="bit" />
+          <Property Name="Aciklama" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="MesaiTurleri">
+          <Key>
+            <PropertyRef Name="MesaiTurID" />
+          </Key>
+          <Property Name="MesaiTurID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MesaiTurAdi" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CarpanKatsayi" Type="decimal" Precision="3" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Misafirs">
+          <Key>
+            <PropertyRef Name="MisafirId" />
+          </Key>
+          <Property Name="MisafirId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AdSoyad" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="TC" Type="nvarchar" MaxLength="11" Nullable="false" />
+          <Property Name="Telefon" Type="nvarchar" MaxLength="14" Nullable="false" />
+          <Property Name="Mail" Type="nvarchar" MaxLength="35" Nullable="false" />
+          <Property Name="Adres" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Aciklama" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="KimlikFoto1" Type="varbinary(max)" Nullable="false" />
+          <Property Name="KimlikFoto2" Type="varbinary(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Odalar">
+          <Key>
+            <PropertyRef Name="OdaID" />
+          </Key>
+          <Property Name="OdaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Kat" Type="int" Nullable="false" />
+          <Property Name="OdaNumarasi" Type="varchar" MaxLength="10" />
+          <Property Name="OdaTuru" Type="varchar" MaxLength="50" />
+          <Property Name="GecelikFiyat" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="KisiSayisi" Type="int" />
+          <Property Name="Durum" Type="varchar" MaxLength="50" />
+          <Property Name="Aciklama" Type="text" />
+        </EntityType>
+        <EntityType Name="Personel">
+          <Key>
+            <PropertyRef Name="PersonelID" />
+          </Key>
+          <Property Name="PersonelID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TCKimlikNo" Type="nvarchar" MaxLength="11" Nullable="false" />
+          <Property Name="Adi" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Soyadi" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DogumTarihi" Type="date" Nullable="false" />
+          <Property Name="Cinsiyet" Type="nvarchar" MaxLength="5" />
+          <Property Name="Adres" Type="nvarchar" MaxLength="200" />
+          <Property Name="Telefon" Type="nvarchar" MaxLength="15" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="IseBaslamaTarihi" Type="date" Nullable="false" />
+          <Property Name="IstenAyrilmaTarihi" Type="date" />
+          <Property Name="PozisyonID" Type="int" />
+          <Property Name="AktifMi" Type="bit" />
+        </EntityType>
+        <EntityType Name="PersonelVardiyalari">
+          <Key>
+            <PropertyRef Name="VardiyaID" />
+          </Key>
+          <Property Name="VardiyaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PersonelID" Type="int" />
+          <Property Name="VardiyaTurID" Type="int" />
+          <Property Name="VardiyaTarihi" Type="date" Nullable="false" />
+          <Property Name="DurumNotu" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Pozisyonlar">
+          <Key>
+            <PropertyRef Name="PozisyonID" />
+          </Key>
+          <Property Name="PozisyonID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PozisyonAdi" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DepartmanID" Type="int" />
+        </EntityType>
+        <EntityType Name="Rezervasyons">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MisafirId" Type="int" Nullable="false" />
+          <Property Name="OdaId" Type="int" Nullable="false" />
+          <Property Name="BaslangicTarihi" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="BitisTarihi" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="KisiSayisi" Type="int" Nullable="false" />
+          <Property Name="Durum" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Fiyat" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="OdaNumarasi" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SigortaBilgileri">
+          <Key>
+            <PropertyRef Name="SigortaID" />
+          </Key>
+          <Property Name="SigortaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PersonelID" Type="int" />
+          <Property Name="SigortaNo" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="BaslangicTarihi" Type="date" Nullable="false" />
+          <Property Name="BitisTarihi" Type="date" />
+          <Property Name="SigortaTuru" Type="nvarchar" MaxLength="50" />
+          <Property Name="AylikPrim" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Urunler">
+          <Key>
+            <PropertyRef Name="urun_id" />
+          </Key>
+          <Property Name="urun_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="urun_adi" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="kategori_id" Type="int" Nullable="false" />
+          <Property Name="stok_miktari" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="birim" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="son_kullanma_tarihi" Type="date" />
+        </EntityType>
+        <EntityType Name="VardiyaTurleri">
+          <Key>
+            <PropertyRef Name="VardiyaTurID" />
+          </Key>
+          <Property Name="VardiyaTurID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VardiyaAdi" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="BaslangicSaati" Type="time" Precision="7" Nullable="false" />
+          <Property Name="BitisSaati" Type="time" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Yemek_Hazirlama">
+          <Key>
+            <PropertyRef Name="hazirlama_id" />
+          </Key>
+          <Property Name="hazirlama_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="yemek_id" Type="int" Nullable="false" />
+          <Property Name="adet" Type="int" Nullable="false" />
+          <Property Name="hazirlama_tarihi" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Yemek_Malzemeleri">
+          <Key>
+            <PropertyRef Name="yemek_id" />
+            <PropertyRef Name="urun_id" />
+          </Key>
+          <Property Name="yemek_id" Type="int" Nullable="false" />
+          <Property Name="urun_id" Type="int" Nullable="false" />
+          <Property Name="miktar" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="birim" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Yemekler">
+          <Key>
+            <PropertyRef Name="yemek_id" />
+          </Key>
+          <Property Name="yemek_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="yemek_adi" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="ogun_turu" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__EksikMesa__Perso__0E6E26BF">
+          <End Role="Personel" Type="Self.Personel" Multiplicity="0..1" />
+          <End Role="EksikMesaiKayitlari" Type="Self.EksikMesaiKayitlari" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personel">
+              <PropertyRef Name="PersonelID" />
+            </Principal>
+            <Dependent Role="EksikMesaiKayitlari">
+              <PropertyRef Name="PersonelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__IzinKayit__IzinT__0F624AF8">
+          <End Role="IzinTurleri" Type="Self.IzinTurleri" Multiplicity="0..1" />
+          <End Role="IzinKayitlari" Type="Self.IzinKayitlari" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IzinTurleri">
+              <PropertyRef Name="IzinTurID" />
+            </Principal>
+            <Dependent Role="IzinKayitlari">
+              <PropertyRef Name="IzinTurID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__IzinKayit__Perso__10566F31">
+          <End Role="Personel" Type="Self.Personel" Multiplicity="0..1" />
+          <End Role="IzinKayitlari" Type="Self.IzinKayitlari" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personel">
+              <PropertyRef Name="PersonelID" />
+            </Principal>
+            <Dependent Role="IzinKayitlari">
+              <PropertyRef Name="PersonelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Maaslar__Persone__114A936A">
+          <End Role="Personel" Type="Self.Personel" Multiplicity="0..1" />
+          <End Role="Maaslar" Type="Self.Maaslar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personel">
+              <PropertyRef Name="PersonelID" />
+            </Principal>
+            <Dependent Role="Maaslar">
+              <PropertyRef Name="PersonelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Menuler__yemek_i__68487DD7">
+          <End Role="Yemekler" Type="Self.Yemekler" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Menuler" Type="Self.Menuler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Yemekler">
+              <PropertyRef Name="yemek_id" />
+            </Principal>
+            <Dependent Role="Menuler">
+              <PropertyRef Name="yemek_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MesaiKayi__Mesai__123EB7A3">
+          <End Role="MesaiTurleri" Type="Self.MesaiTurleri" Multiplicity="0..1" />
+          <End Role="MesaiKayitlari" Type="Self.MesaiKayitlari" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MesaiTurleri">
+              <PropertyRef Name="MesaiTurID" />
+            </Principal>
+            <Dependent Role="MesaiKayitlari">
+              <PropertyRef Name="MesaiTurID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MesaiKayi__Perso__1332DBDC">
+          <End Role="Personel" Type="Self.Personel" Multiplicity="0..1" />
+          <End Role="MesaiKayitlari" Type="Self.MesaiKayitlari" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personel">
+              <PropertyRef Name="PersonelID" />
+            </Principal>
+            <Dependent Role="MesaiKayitlari">
+              <PropertyRef Name="PersonelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Personel__Pozisy__14270015">
+          <End Role="Pozisyonlar" Type="Self.Pozisyonlar" Multiplicity="0..1" />
+          <End Role="Personel" Type="Self.Personel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pozisyonlar">
+              <PropertyRef Name="PozisyonID" />
+            </Principal>
+            <Dependent Role="Personel">
+              <PropertyRef Name="PozisyonID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PersonelV__Perso__151B244E">
+          <End Role="Personel" Type="Self.Personel" Multiplicity="0..1" />
+          <End Role="PersonelVardiyalari" Type="Self.PersonelVardiyalari" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personel">
+              <PropertyRef Name="PersonelID" />
+            </Principal>
+            <Dependent Role="PersonelVardiyalari">
+              <PropertyRef Name="PersonelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PersonelV__Vardi__160F4887">
+          <End Role="VardiyaTurleri" Type="Self.VardiyaTurleri" Multiplicity="0..1" />
+          <End Role="PersonelVardiyalari" Type="Self.PersonelVardiyalari" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VardiyaTurleri">
+              <PropertyRef Name="VardiyaTurID" />
+            </Principal>
+            <Dependent Role="PersonelVardiyalari">
+              <PropertyRef Name="VardiyaTurID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Pozisyonl__Depar__17036CC0">
+          <End Role="Departmanlar" Type="Self.Departmanlar" Multiplicity="0..1" />
+          <End Role="Pozisyonlar" Type="Self.Pozisyonlar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departmanlar">
+              <PropertyRef Name="DepartmanID" />
+            </Principal>
+            <Dependent Role="Pozisyonlar">
+              <PropertyRef Name="DepartmanID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SigortaBi__Perso__17F790F9">
+          <End Role="Personel" Type="Self.Personel" Multiplicity="0..1" />
+          <End Role="SigortaBilgileri" Type="Self.SigortaBilgileri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personel">
+              <PropertyRef Name="PersonelID" />
+            </Principal>
+            <Dependent Role="SigortaBilgileri">
+              <PropertyRef Name="PersonelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Urunler__kategor__693CA210">
+          <End Role="Kategoriler" Type="Self.Kategoriler" Multiplicity="1" />
+          <End Role="Urunler" Type="Self.Urunler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kategoriler">
+              <PropertyRef Name="kategori_id" />
+            </Principal>
+            <Dependent Role="Urunler">
+              <PropertyRef Name="kategori_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Yemek_Haz__yemek__6A30C649">
+          <End Role="Yemekler" Type="Self.Yemekler" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Yemek_Hazirlama" Type="Self.Yemek_Hazirlama" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Yemekler">
+              <PropertyRef Name="yemek_id" />
+            </Principal>
+            <Dependent Role="Yemek_Hazirlama">
+              <PropertyRef Name="yemek_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Yemek_Mal__urun___6B24EA82">
+          <End Role="Urunler" Type="Self.Urunler" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Yemek_Malzemeleri" Type="Self.Yemek_Malzemeleri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Urunler">
+              <PropertyRef Name="urun_id" />
+            </Principal>
+            <Dependent Role="Yemek_Malzemeleri">
+              <PropertyRef Name="urun_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Yemek_Mal__yemek__6C190EBB">
+          <End Role="Yemekler" Type="Self.Yemekler" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Yemek_Malzemeleri" Type="Self.Yemek_Malzemeleri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Yemekler">
+              <PropertyRef Name="yemek_id" />
+            </Principal>
+            <Dependent Role="Yemek_Malzemeleri">
+              <PropertyRef Name="yemek_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rezervasyons_Misafirs">
+          <End Role="Misafirs" Type="Self.Misafirs" Multiplicity="1" />
+          <End Role="Rezervasyons" Type="Self.Rezervasyons" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Misafirs">
+              <PropertyRef Name="MisafirId" />
+            </Principal>
+            <Dependent Role="Rezervasyons">
+              <PropertyRef Name="MisafirId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rezervasyons_Odalar">
+          <End Role="Odalar" Type="Self.Odalar" Multiplicity="1" />
+          <End Role="Rezervasyons" Type="Self.Rezervasyons" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Odalar">
+              <PropertyRef Name="OdaID" />
+            </Principal>
+            <Dependent Role="Rezervasyons">
+              <PropertyRef Name="OdaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="OtelYonetimiDbModelStoreContainer">
+          <EntitySet Name="Departmanlar" EntityType="Self.Departmanlar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EksikMesaiKayitlari" EntityType="Self.EksikMesaiKayitlari" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IzinKayitlari" EntityType="Self.IzinKayitlari" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IzinTurleri" EntityType="Self.IzinTurleri" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kategoriler" EntityType="Self.Kategoriler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Maaslar" EntityType="Self.Maaslar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Menuler" EntityType="Self.Menuler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MesaiKayitlari" EntityType="Self.MesaiKayitlari" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MesaiTurleri" EntityType="Self.MesaiTurleri" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Misafirs" EntityType="Self.Misafirs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Odalar" EntityType="Self.Odalar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Personel" EntityType="Self.Personel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PersonelVardiyalari" EntityType="Self.PersonelVardiyalari" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pozisyonlar" EntityType="Self.Pozisyonlar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rezervasyons" EntityType="Self.Rezervasyons" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SigortaBilgileri" EntityType="Self.SigortaBilgileri" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Urunler" EntityType="Self.Urunler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VardiyaTurleri" EntityType="Self.VardiyaTurleri" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Yemek_Hazirlama" EntityType="Self.Yemek_Hazirlama" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Yemek_Malzemeleri" EntityType="Self.Yemek_Malzemeleri" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Yemekler" EntityType="Self.Yemekler" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__EksikMesa__Perso__0E6E26BF" Association="Self.FK__EksikMesa__Perso__0E6E26BF">
+            <End Role="Personel" EntitySet="Personel" />
+            <End Role="EksikMesaiKayitlari" EntitySet="EksikMesaiKayitlari" />
+          </AssociationSet>
+          <AssociationSet Name="FK__IzinKayit__IzinT__0F624AF8" Association="Self.FK__IzinKayit__IzinT__0F624AF8">
+            <End Role="IzinTurleri" EntitySet="IzinTurleri" />
+            <End Role="IzinKayitlari" EntitySet="IzinKayitlari" />
+          </AssociationSet>
+          <AssociationSet Name="FK__IzinKayit__Perso__10566F31" Association="Self.FK__IzinKayit__Perso__10566F31">
+            <End Role="Personel" EntitySet="Personel" />
+            <End Role="IzinKayitlari" EntitySet="IzinKayitlari" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Maaslar__Persone__114A936A" Association="Self.FK__Maaslar__Persone__114A936A">
+            <End Role="Personel" EntitySet="Personel" />
+            <End Role="Maaslar" EntitySet="Maaslar" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Menuler__yemek_i__68487DD7" Association="Self.FK__Menuler__yemek_i__68487DD7">
+            <End Role="Yemekler" EntitySet="Yemekler" />
+            <End Role="Menuler" EntitySet="Menuler" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MesaiKayi__Mesai__123EB7A3" Association="Self.FK__MesaiKayi__Mesai__123EB7A3">
+            <End Role="MesaiTurleri" EntitySet="MesaiTurleri" />
+            <End Role="MesaiKayitlari" EntitySet="MesaiKayitlari" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MesaiKayi__Perso__1332DBDC" Association="Self.FK__MesaiKayi__Perso__1332DBDC">
+            <End Role="Personel" EntitySet="Personel" />
+            <End Role="MesaiKayitlari" EntitySet="MesaiKayitlari" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Personel__Pozisy__14270015" Association="Self.FK__Personel__Pozisy__14270015">
+            <End Role="Pozisyonlar" EntitySet="Pozisyonlar" />
+            <End Role="Personel" EntitySet="Personel" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PersonelV__Perso__151B244E" Association="Self.FK__PersonelV__Perso__151B244E">
+            <End Role="Personel" EntitySet="Personel" />
+            <End Role="PersonelVardiyalari" EntitySet="PersonelVardiyalari" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PersonelV__Vardi__160F4887" Association="Self.FK__PersonelV__Vardi__160F4887">
+            <End Role="VardiyaTurleri" EntitySet="VardiyaTurleri" />
+            <End Role="PersonelVardiyalari" EntitySet="PersonelVardiyalari" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Pozisyonl__Depar__17036CC0" Association="Self.FK__Pozisyonl__Depar__17036CC0">
+            <End Role="Departmanlar" EntitySet="Departmanlar" />
+            <End Role="Pozisyonlar" EntitySet="Pozisyonlar" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SigortaBi__Perso__17F790F9" Association="Self.FK__SigortaBi__Perso__17F790F9">
+            <End Role="Personel" EntitySet="Personel" />
+            <End Role="SigortaBilgileri" EntitySet="SigortaBilgileri" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Urunler__kategor__693CA210" Association="Self.FK__Urunler__kategor__693CA210">
+            <End Role="Kategoriler" EntitySet="Kategoriler" />
+            <End Role="Urunler" EntitySet="Urunler" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Yemek_Haz__yemek__6A30C649" Association="Self.FK__Yemek_Haz__yemek__6A30C649">
+            <End Role="Yemekler" EntitySet="Yemekler" />
+            <End Role="Yemek_Hazirlama" EntitySet="Yemek_Hazirlama" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Yemek_Mal__urun___6B24EA82" Association="Self.FK__Yemek_Mal__urun___6B24EA82">
+            <End Role="Urunler" EntitySet="Urunler" />
+            <End Role="Yemek_Malzemeleri" EntitySet="Yemek_Malzemeleri" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Yemek_Mal__yemek__6C190EBB" Association="Self.FK__Yemek_Mal__yemek__6C190EBB">
+            <End Role="Yemekler" EntitySet="Yemekler" />
+            <End Role="Yemek_Malzemeleri" EntitySet="Yemek_Malzemeleri" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rezervasyons_Misafirs" Association="Self.FK_Rezervasyons_Misafirs">
+            <End Role="Misafirs" EntitySet="Misafirs" />
+            <End Role="Rezervasyons" EntitySet="Rezervasyons" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rezervasyons_Odalar" Association="Self.FK_Rezervasyons_Odalar">
+            <End Role="Odalar" EntitySet="Odalar" />
+            <End Role="Rezervasyons" EntitySet="Rezervasyons" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="OtelYonetimiDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Departmanlar">
+          <Key>
+            <PropertyRef Name="DepartmanID" />
+          </Key>
+          <Property Name="DepartmanID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DepartmanAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Pozisyonlar" Relationship="Self.FK__Pozisyonl__Depar__17036CC0" FromRole="Departmanlar" ToRole="Pozisyonlar" />
+        </EntityType>
+        <EntityType Name="EksikMesaiKayitlari">
+          <Key>
+            <PropertyRef Name="EksikMesaiID" />
+          </Key>
+          <Property Name="EksikMesaiID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PersonelID" Type="Int32" />
+          <Property Name="EksikMesaiTarihi" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="EksikSure" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="KesilisTutari" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Aciklama" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Personel" Relationship="Self.FK__EksikMesa__Perso__0E6E26BF" FromRole="EksikMesaiKayitlari" ToRole="Personel" />
+        </EntityType>
+        <EntityType Name="IzinKayitlari">
+          <Key>
+            <PropertyRef Name="IzinID" />
+          </Key>
+          <Property Name="IzinID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PersonelID" Type="Int32" />
+          <Property Name="IzinTurID" Type="Int32" />
+          <Property Name="BaslangicTarihi" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="BitisTarihi" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="IzinGunSayisi" Type="Int32" Nullable="false" />
+          <Property Name="OnayDurumu" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Aciklama" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="IzinTurleri" Relationship="Self.FK__IzinKayit__IzinT__0F624AF8" FromRole="IzinKayitlari" ToRole="IzinTurleri" />
+          <NavigationProperty Name="Personel" Relationship="Self.FK__IzinKayit__Perso__10566F31" FromRole="IzinKayitlari" ToRole="Personel" />
+        </EntityType>
+        <EntityType Name="IzinTurleri">
+          <Key>
+            <PropertyRef Name="IzinTurID" />
+          </Key>
+          <Property Name="IzinTurID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IzinTurAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UcretliMi" Type="Boolean" />
+          <NavigationProperty Name="IzinKayitlari" Relationship="Self.FK__IzinKayit__IzinT__0F624AF8" FromRole="IzinTurleri" ToRole="IzinKayitlari" />
+        </EntityType>
+        <EntityType Name="Kategoriler">
+          <Key>
+            <PropertyRef Name="kategori_id" />
+          </Key>
+          <Property Name="kategori_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="kategori_adi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Urunler" Relationship="Self.FK__Urunler__kategor__693CA210" FromRole="Kategoriler" ToRole="Urunler" />
+        </EntityType>
+        <EntityType Name="Maaslar">
+          <Key>
+            <PropertyRef Name="MaasID" />
+          </Key>
+          <Property Name="MaasID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PersonelID" Type="Int32" />
+          <Property Name="BrutMaas" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="NetMaas" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="MaasAyi" Type="Int32" Nullable="false" />
+          <Property Name="MaasYili" Type="Int32" Nullable="false" />
+          <Property Name="OdemeTarihi" Type="DateTime" Precision="0" />
+          <Property Name="Aciklama" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Personel" Relationship="Self.FK__Maaslar__Persone__114A936A" FromRole="Maaslar" ToRole="Personel" />
+        </EntityType>
+        <EntityType Name="Menuler">
+          <Key>
+            <PropertyRef Name="menu_id" />
+          </Key>
+          <Property Name="menu_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tarih" Type="DateTime" Precision="3" />
+          <Property Name="yemek_id" Type="Int32" Nullable="false" />
+          <Property Name="ogun_turu" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Yemekler" Relationship="Self.FK__Menuler__yemek_i__68487DD7" FromRole="Menuler" ToRole="Yemekler" />
+        </EntityType>
+        <EntityType Name="MesaiKayitlari">
+          <Key>
+            <PropertyRef Name="MesaiID" />
+          </Key>
+          <Property Name="MesaiID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PersonelID" Type="Int32" />
+          <Property Name="MesaiTurID" Type="Int32" />
+          <Property Name="MesaiTarihi" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="BaslangicSaati" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="BitisSaati" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="MesaiSuresi" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="MesaiUcreti" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Onaylandi" Type="Boolean" />
+          <Property Name="Aciklama" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MesaiTurleri" Relationship="Self.FK__MesaiKayi__Mesai__123EB7A3" FromRole="MesaiKayitlari" ToRole="MesaiTurleri" />
+          <NavigationProperty Name="Personel" Relationship="Self.FK__MesaiKayi__Perso__1332DBDC" FromRole="MesaiKayitlari" ToRole="Personel" />
+        </EntityType>
+        <EntityType Name="MesaiTurleri">
+          <Key>
+            <PropertyRef Name="MesaiTurID" />
+          </Key>
+          <Property Name="MesaiTurID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MesaiTurAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CarpanKatsayi" Type="Decimal" Precision="3" Scale="2" Nullable="false" />
+          <NavigationProperty Name="MesaiKayitlari" Relationship="Self.FK__MesaiKayi__Mesai__123EB7A3" FromRole="MesaiTurleri" ToRole="MesaiKayitlari" />
+        </EntityType>
+        <EntityType Name="Misafirs">
+          <Key>
+            <PropertyRef Name="MisafirId" />
+          </Key>
+          <Property Name="MisafirId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AdSoyad" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TC" Type="String" MaxLength="11" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Telefon" Type="String" MaxLength="14" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Mail" Type="String" MaxLength="35" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Adres" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Aciklama" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="KimlikFoto1" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="KimlikFoto2" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <NavigationProperty Name="Rezervasyons" Relationship="Self.FK_Rezervasyons_Misafirs" FromRole="Misafirs" ToRole="Rezervasyons" />
+        </EntityType>
+        <EntityType Name="Odalar">
+          <Key>
+            <PropertyRef Name="OdaID" />
+          </Key>
+          <Property Name="OdaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Kat" Type="Int32" Nullable="false" />
+          <Property Name="OdaNumarasi" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="OdaTuru" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GecelikFiyat" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="KisiSayisi" Type="Int32" />
+          <Property Name="Durum" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Aciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Rezervasyons" Relationship="Self.FK_Rezervasyons_Odalar" FromRole="Odalar" ToRole="Rezervasyons" />
+        </EntityType>
+        <EntityType Name="Personel">
+          <Key>
+            <PropertyRef Name="PersonelID" />
+          </Key>
+          <Property Name="PersonelID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TCKimlikNo" Type="String" MaxLength="11" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Adi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Soyadi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DogumTarihi" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Cinsiyet" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="Adres" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Telefon" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IseBaslamaTarihi" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="IstenAyrilmaTarihi" Type="DateTime" Precision="0" />
+          <Property Name="PozisyonID" Type="Int32" />
+          <Property Name="AktifMi" Type="Boolean" />
+          <NavigationProperty Name="EksikMesaiKayitlari" Relationship="Self.FK__EksikMesa__Perso__0E6E26BF" FromRole="Personel" ToRole="EksikMesaiKayitlari" />
+          <NavigationProperty Name="IzinKayitlari" Relationship="Self.FK__IzinKayit__Perso__10566F31" FromRole="Personel" ToRole="IzinKayitlari" />
+          <NavigationProperty Name="Maaslar" Relationship="Self.FK__Maaslar__Persone__114A936A" FromRole="Personel" ToRole="Maaslar" />
+          <NavigationProperty Name="MesaiKayitlari" Relationship="Self.FK__MesaiKayi__Perso__1332DBDC" FromRole="Personel" ToRole="MesaiKayitlari" />
+          <NavigationProperty Name="Pozisyonlar" Relationship="Self.FK__Personel__Pozisy__14270015" FromRole="Personel" ToRole="Pozisyonlar" />
+          <NavigationProperty Name="PersonelVardiyalari" Relationship="Self.FK__PersonelV__Perso__151B244E" FromRole="Personel" ToRole="PersonelVardiyalari" />
+          <NavigationProperty Name="SigortaBilgileri" Relationship="Self.FK__SigortaBi__Perso__17F790F9" FromRole="Personel" ToRole="SigortaBilgileri" />
+        </EntityType>
+        <EntityType Name="PersonelVardiyalari">
+          <Key>
+            <PropertyRef Name="VardiyaID" />
+          </Key>
+          <Property Name="VardiyaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PersonelID" Type="Int32" />
+          <Property Name="VardiyaTurID" Type="Int32" />
+          <Property Name="VardiyaTarihi" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DurumNotu" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Personel" Relationship="Self.FK__PersonelV__Perso__151B244E" FromRole="PersonelVardiyalari" ToRole="Personel" />
+          <NavigationProperty Name="VardiyaTurleri" Relationship="Self.FK__PersonelV__Vardi__160F4887" FromRole="PersonelVardiyalari" ToRole="VardiyaTurleri" />
+        </EntityType>
+        <EntityType Name="Pozisyonlar">
+          <Key>
+            <PropertyRef Name="PozisyonID" />
+          </Key>
+          <Property Name="PozisyonID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PozisyonAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DepartmanID" Type="Int32" />
+          <NavigationProperty Name="Departmanlar" Relationship="Self.FK__Pozisyonl__Depar__17036CC0" FromRole="Pozisyonlar" ToRole="Departmanlar" />
+          <NavigationProperty Name="Personel" Relationship="Self.FK__Personel__Pozisy__14270015" FromRole="Pozisyonlar" ToRole="Personel" />
+        </EntityType>
+        <EntityType Name="Rezervasyons">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MisafirId" Type="Int32" Nullable="false" />
+          <Property Name="OdaId" Type="Int32" Nullable="false" />
+          <Property Name="BaslangicTarihi" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="BitisTarihi" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="KisiSayisi" Type="Int32" Nullable="false" />
+          <Property Name="Durum" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Fiyat" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="OdaNumarasi" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Misafirs" Relationship="Self.FK_Rezervasyons_Misafirs" FromRole="Rezervasyons" ToRole="Misafirs" />
+          <NavigationProperty Name="Odalar" Relationship="Self.FK_Rezervasyons_Odalar" FromRole="Rezervasyons" ToRole="Odalar" />
+        </EntityType>
+        <EntityType Name="SigortaBilgileri">
+          <Key>
+            <PropertyRef Name="SigortaID" />
+          </Key>
+          <Property Name="SigortaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PersonelID" Type="Int32" />
+          <Property Name="SigortaNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BaslangicTarihi" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="BitisTarihi" Type="DateTime" Precision="0" />
+          <Property Name="SigortaTuru" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AylikPrim" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <NavigationProperty Name="Personel" Relationship="Self.FK__SigortaBi__Perso__17F790F9" FromRole="SigortaBilgileri" ToRole="Personel" />
+        </EntityType>
+        <EntityType Name="Urunler">
+          <Key>
+            <PropertyRef Name="urun_id" />
+          </Key>
+          <Property Name="urun_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="urun_adi" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="kategori_id" Type="Int32" Nullable="false" />
+          <Property Name="stok_miktari" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="birim" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="son_kullanma_tarihi" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Kategoriler" Relationship="Self.FK__Urunler__kategor__693CA210" FromRole="Urunler" ToRole="Kategoriler" />
+          <NavigationProperty Name="Yemek_Malzemeleri" Relationship="Self.FK__Yemek_Mal__urun___6B24EA82" FromRole="Urunler" ToRole="Yemek_Malzemeleri" />
+        </EntityType>
+        <EntityType Name="VardiyaTurleri">
+          <Key>
+            <PropertyRef Name="VardiyaTurID" />
+          </Key>
+          <Property Name="VardiyaTurID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VardiyaAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BaslangicSaati" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="BitisSaati" Type="Time" Nullable="false" Precision="7" />
+          <NavigationProperty Name="PersonelVardiyalari" Relationship="Self.FK__PersonelV__Vardi__160F4887" FromRole="VardiyaTurleri" ToRole="PersonelVardiyalari" />
+        </EntityType>
+        <EntityType Name="Yemek_Hazirlama">
+          <Key>
+            <PropertyRef Name="hazirlama_id" />
+          </Key>
+          <Property Name="hazirlama_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="yemek_id" Type="Int32" Nullable="false" />
+          <Property Name="adet" Type="Int32" Nullable="false" />
+          <Property Name="hazirlama_tarihi" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Yemekler" Relationship="Self.FK__Yemek_Haz__yemek__6A30C649" FromRole="Yemek_Hazirlama" ToRole="Yemekler" />
+        </EntityType>
+        <EntityType Name="Yemek_Malzemeleri">
+          <Key>
+            <PropertyRef Name="yemek_id" />
+            <PropertyRef Name="urun_id" />
+          </Key>
+          <Property Name="yemek_id" Type="Int32" Nullable="false" />
+          <Property Name="urun_id" Type="Int32" Nullable="false" />
+          <Property Name="miktar" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="birim" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Urunler" Relationship="Self.FK__Yemek_Mal__urun___6B24EA82" FromRole="Yemek_Malzemeleri" ToRole="Urunler" />
+          <NavigationProperty Name="Yemekler" Relationship="Self.FK__Yemek_Mal__yemek__6C190EBB" FromRole="Yemek_Malzemeleri" ToRole="Yemekler" />
+        </EntityType>
+        <EntityType Name="Yemekler">
+          <Key>
+            <PropertyRef Name="yemek_id" />
+          </Key>
+          <Property Name="yemek_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="yemek_adi" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ogun_turu" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Menuler" Relationship="Self.FK__Menuler__yemek_i__68487DD7" FromRole="Yemekler" ToRole="Menuler" />
+          <NavigationProperty Name="Yemek_Hazirlama" Relationship="Self.FK__Yemek_Haz__yemek__6A30C649" FromRole="Yemekler" ToRole="Yemek_Hazirlama" />
+          <NavigationProperty Name="Yemek_Malzemeleri" Relationship="Self.FK__Yemek_Mal__yemek__6C190EBB" FromRole="Yemekler" ToRole="Yemek_Malzemeleri" />
+        </EntityType>
+        <Association Name="FK__Pozisyonl__Depar__17036CC0">
+          <End Role="Departmanlar" Type="Self.Departmanlar" Multiplicity="0..1" />
+          <End Role="Pozisyonlar" Type="Self.Pozisyonlar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departmanlar">
+              <PropertyRef Name="DepartmanID" />
+            </Principal>
+            <Dependent Role="Pozisyonlar">
+              <PropertyRef Name="DepartmanID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__EksikMesa__Perso__0E6E26BF">
+          <End Role="Personel" Type="Self.Personel" Multiplicity="0..1" />
+          <End Role="EksikMesaiKayitlari" Type="Self.EksikMesaiKayitlari" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personel">
+              <PropertyRef Name="PersonelID" />
+            </Principal>
+            <Dependent Role="EksikMesaiKayitlari">
+              <PropertyRef Name="PersonelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__IzinKayit__IzinT__0F624AF8">
+          <End Role="IzinTurleri" Type="Self.IzinTurleri" Multiplicity="0..1" />
+          <End Role="IzinKayitlari" Type="Self.IzinKayitlari" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IzinTurleri">
+              <PropertyRef Name="IzinTurID" />
+            </Principal>
+            <Dependent Role="IzinKayitlari">
+              <PropertyRef Name="IzinTurID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__IzinKayit__Perso__10566F31">
+          <End Role="Personel" Type="Self.Personel" Multiplicity="0..1" />
+          <End Role="IzinKayitlari" Type="Self.IzinKayitlari" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personel">
+              <PropertyRef Name="PersonelID" />
+            </Principal>
+            <Dependent Role="IzinKayitlari">
+              <PropertyRef Name="PersonelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Urunler__kategor__693CA210">
+          <End Role="Kategoriler" Type="Self.Kategoriler" Multiplicity="1" />
+          <End Role="Urunler" Type="Self.Urunler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kategoriler">
+              <PropertyRef Name="kategori_id" />
+            </Principal>
+            <Dependent Role="Urunler">
+              <PropertyRef Name="kategori_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Maaslar__Persone__114A936A">
+          <End Role="Personel" Type="Self.Personel" Multiplicity="0..1" />
+          <End Role="Maaslar" Type="Self.Maaslar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personel">
+              <PropertyRef Name="PersonelID" />
+            </Principal>
+            <Dependent Role="Maaslar">
+              <PropertyRef Name="PersonelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Menuler__yemek_i__68487DD7">
+          <End Role="Yemekler" Type="Self.Yemekler" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Menuler" Type="Self.Menuler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Yemekler">
+              <PropertyRef Name="yemek_id" />
+            </Principal>
+            <Dependent Role="Menuler">
+              <PropertyRef Name="yemek_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MesaiKayi__Mesai__123EB7A3">
+          <End Role="MesaiTurleri" Type="Self.MesaiTurleri" Multiplicity="0..1" />
+          <End Role="MesaiKayitlari" Type="Self.MesaiKayitlari" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MesaiTurleri">
+              <PropertyRef Name="MesaiTurID" />
+            </Principal>
+            <Dependent Role="MesaiKayitlari">
+              <PropertyRef Name="MesaiTurID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MesaiKayi__Perso__1332DBDC">
+          <End Role="Personel" Type="Self.Personel" Multiplicity="0..1" />
+          <End Role="MesaiKayitlari" Type="Self.MesaiKayitlari" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personel">
+              <PropertyRef Name="PersonelID" />
+            </Principal>
+            <Dependent Role="MesaiKayitlari">
+              <PropertyRef Name="PersonelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rezervasyons_Misafirs">
+          <End Role="Misafirs" Type="Self.Misafirs" Multiplicity="1" />
+          <End Role="Rezervasyons" Type="Self.Rezervasyons" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Misafirs">
+              <PropertyRef Name="MisafirId" />
+            </Principal>
+            <Dependent Role="Rezervasyons">
+              <PropertyRef Name="MisafirId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rezervasyons_Odalar">
+          <End Role="Odalar" Type="Self.Odalar" Multiplicity="1" />
+          <End Role="Rezervasyons" Type="Self.Rezervasyons" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Odalar">
+              <PropertyRef Name="OdaID" />
+            </Principal>
+            <Dependent Role="Rezervasyons">
+              <PropertyRef Name="OdaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Personel__Pozisy__14270015">
+          <End Role="Pozisyonlar" Type="Self.Pozisyonlar" Multiplicity="0..1" />
+          <End Role="Personel" Type="Self.Personel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pozisyonlar">
+              <PropertyRef Name="PozisyonID" />
+            </Principal>
+            <Dependent Role="Personel">
+              <PropertyRef Name="PozisyonID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PersonelV__Perso__151B244E">
+          <End Role="Personel" Type="Self.Personel" Multiplicity="0..1" />
+          <End Role="PersonelVardiyalari" Type="Self.PersonelVardiyalari" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personel">
+              <PropertyRef Name="PersonelID" />
+            </Principal>
+            <Dependent Role="PersonelVardiyalari">
+              <PropertyRef Name="PersonelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SigortaBi__Perso__17F790F9">
+          <End Role="Personel" Type="Self.Personel" Multiplicity="0..1" />
+          <End Role="SigortaBilgileri" Type="Self.SigortaBilgileri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personel">
+              <PropertyRef Name="PersonelID" />
+            </Principal>
+            <Dependent Role="SigortaBilgileri">
+              <PropertyRef Name="PersonelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PersonelV__Vardi__160F4887">
+          <End Role="VardiyaTurleri" Type="Self.VardiyaTurleri" Multiplicity="0..1" />
+          <End Role="PersonelVardiyalari" Type="Self.PersonelVardiyalari" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VardiyaTurleri">
+              <PropertyRef Name="VardiyaTurID" />
+            </Principal>
+            <Dependent Role="PersonelVardiyalari">
+              <PropertyRef Name="VardiyaTurID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Yemek_Mal__urun___6B24EA82">
+          <End Role="Urunler" Type="Self.Urunler" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Yemek_Malzemeleri" Type="Self.Yemek_Malzemeleri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Urunler">
+              <PropertyRef Name="urun_id" />
+            </Principal>
+            <Dependent Role="Yemek_Malzemeleri">
+              <PropertyRef Name="urun_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Yemek_Haz__yemek__6A30C649">
+          <End Role="Yemekler" Type="Self.Yemekler" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Yemek_Hazirlama" Type="Self.Yemek_Hazirlama" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Yemekler">
+              <PropertyRef Name="yemek_id" />
+            </Principal>
+            <Dependent Role="Yemek_Hazirlama">
+              <PropertyRef Name="yemek_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Yemek_Mal__yemek__6C190EBB">
+          <End Role="Yemekler" Type="Self.Yemekler" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Yemek_Malzemeleri" Type="Self.Yemek_Malzemeleri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Yemekler">
+              <PropertyRef Name="yemek_id" />
+            </Principal>
+            <Dependent Role="Yemek_Malzemeleri">
+              <PropertyRef Name="yemek_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="OtelYonetimiDbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Departmanlar" EntityType="Self.Departmanlar" />
+          <EntitySet Name="EksikMesaiKayitlari" EntityType="Self.EksikMesaiKayitlari" />
+          <EntitySet Name="IzinKayitlari" EntityType="Self.IzinKayitlari" />
+          <EntitySet Name="IzinTurleri" EntityType="Self.IzinTurleri" />
+          <EntitySet Name="Kategoriler" EntityType="Self.Kategoriler" />
+          <EntitySet Name="Maaslar" EntityType="Self.Maaslar" />
+          <EntitySet Name="Menuler" EntityType="Self.Menuler" />
+          <EntitySet Name="MesaiKayitlari" EntityType="Self.MesaiKayitlari" />
+          <EntitySet Name="MesaiTurleri" EntityType="Self.MesaiTurleri" />
+          <EntitySet Name="Misafirs" EntityType="Self.Misafirs" />
+          <EntitySet Name="Odalar" EntityType="Self.Odalar" />
+          <EntitySet Name="Personel" EntityType="Self.Personel" />
+          <EntitySet Name="PersonelVardiyalari" EntityType="Self.PersonelVardiyalari" />
+          <EntitySet Name="Pozisyonlar" EntityType="Self.Pozisyonlar" />
+          <EntitySet Name="Rezervasyons" EntityType="Self.Rezervasyons" />
+          <EntitySet Name="SigortaBilgileri" EntityType="Self.SigortaBilgileri" />
+          <EntitySet Name="Urunler" EntityType="Self.Urunler" />
+          <EntitySet Name="VardiyaTurleri" EntityType="Self.VardiyaTurleri" />
+          <EntitySet Name="Yemek_Hazirlama" EntityType="Self.Yemek_Hazirlama" />
+          <EntitySet Name="Yemek_Malzemeleri" EntityType="Self.Yemek_Malzemeleri" />
+          <EntitySet Name="Yemekler" EntityType="Self.Yemekler" />
+          <AssociationSet Name="FK__Pozisyonl__Depar__17036CC0" Association="Self.FK__Pozisyonl__Depar__17036CC0">
+            <End Role="Departmanlar" EntitySet="Departmanlar" />
+            <End Role="Pozisyonlar" EntitySet="Pozisyonlar" />
+          </AssociationSet>
+          <AssociationSet Name="FK__EksikMesa__Perso__0E6E26BF" Association="Self.FK__EksikMesa__Perso__0E6E26BF">
+            <End Role="Personel" EntitySet="Personel" />
+            <End Role="EksikMesaiKayitlari" EntitySet="EksikMesaiKayitlari" />
+          </AssociationSet>
+          <AssociationSet Name="FK__IzinKayit__IzinT__0F624AF8" Association="Self.FK__IzinKayit__IzinT__0F624AF8">
+            <End Role="IzinTurleri" EntitySet="IzinTurleri" />
+            <End Role="IzinKayitlari" EntitySet="IzinKayitlari" />
+          </AssociationSet>
+          <AssociationSet Name="FK__IzinKayit__Perso__10566F31" Association="Self.FK__IzinKayit__Perso__10566F31">
+            <End Role="Personel" EntitySet="Personel" />
+            <End Role="IzinKayitlari" EntitySet="IzinKayitlari" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Urunler__kategor__693CA210" Association="Self.FK__Urunler__kategor__693CA210">
+            <End Role="Kategoriler" EntitySet="Kategoriler" />
+            <End Role="Urunler" EntitySet="Urunler" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Maaslar__Persone__114A936A" Association="Self.FK__Maaslar__Persone__114A936A">
+            <End Role="Personel" EntitySet="Personel" />
+            <End Role="Maaslar" EntitySet="Maaslar" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Menuler__yemek_i__68487DD7" Association="Self.FK__Menuler__yemek_i__68487DD7">
+            <End Role="Yemekler" EntitySet="Yemekler" />
+            <End Role="Menuler" EntitySet="Menuler" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MesaiKayi__Mesai__123EB7A3" Association="Self.FK__MesaiKayi__Mesai__123EB7A3">
+            <End Role="MesaiTurleri" EntitySet="MesaiTurleri" />
+            <End Role="MesaiKayitlari" EntitySet="MesaiKayitlari" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MesaiKayi__Perso__1332DBDC" Association="Self.FK__MesaiKayi__Perso__1332DBDC">
+            <End Role="Personel" EntitySet="Personel" />
+            <End Role="MesaiKayitlari" EntitySet="MesaiKayitlari" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rezervasyons_Misafirs" Association="Self.FK_Rezervasyons_Misafirs">
+            <End Role="Misafirs" EntitySet="Misafirs" />
+            <End Role="Rezervasyons" EntitySet="Rezervasyons" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rezervasyons_Odalar" Association="Self.FK_Rezervasyons_Odalar">
+            <End Role="Odalar" EntitySet="Odalar" />
+            <End Role="Rezervasyons" EntitySet="Rezervasyons" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Personel__Pozisy__14270015" Association="Self.FK__Personel__Pozisy__14270015">
+            <End Role="Pozisyonlar" EntitySet="Pozisyonlar" />
+            <End Role="Personel" EntitySet="Personel" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PersonelV__Perso__151B244E" Association="Self.FK__PersonelV__Perso__151B244E">
+            <End Role="Personel" EntitySet="Personel" />
+            <End Role="PersonelVardiyalari" EntitySet="PersonelVardiyalari" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SigortaBi__Perso__17F790F9" Association="Self.FK__SigortaBi__Perso__17F790F9">
+            <End Role="Personel" EntitySet="Personel" />
+            <End Role="SigortaBilgileri" EntitySet="SigortaBilgileri" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PersonelV__Vardi__160F4887" Association="Self.FK__PersonelV__Vardi__160F4887">
+            <End Role="VardiyaTurleri" EntitySet="VardiyaTurleri" />
+            <End Role="PersonelVardiyalari" EntitySet="PersonelVardiyalari" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Yemek_Mal__urun___6B24EA82" Association="Self.FK__Yemek_Mal__urun___6B24EA82">
+            <End Role="Urunler" EntitySet="Urunler" />
+            <End Role="Yemek_Malzemeleri" EntitySet="Yemek_Malzemeleri" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Yemek_Haz__yemek__6A30C649" Association="Self.FK__Yemek_Haz__yemek__6A30C649">
+            <End Role="Yemekler" EntitySet="Yemekler" />
+            <End Role="Yemek_Hazirlama" EntitySet="Yemek_Hazirlama" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Yemek_Mal__yemek__6C190EBB" Association="Self.FK__Yemek_Mal__yemek__6C190EBB">
+            <End Role="Yemekler" EntitySet="Yemekler" />
+            <End Role="Yemek_Malzemeleri" EntitySet="Yemek_Malzemeleri" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="OtelYonetimiDbModelStoreContainer" CdmEntityContainer="OtelYonetimiDbEntities">
+          <EntitySetMapping Name="Departmanlar">
+            <EntityTypeMapping TypeName="OtelYonetimiDbModel.Departmanlar">
+              <MappingFragment StoreEntitySet="Departmanlar">
+                <ScalarProperty Name="DepartmanID" ColumnName="DepartmanID" />
+                <ScalarProperty Name="DepartmanAdi" ColumnName="DepartmanAdi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EksikMesaiKayitlari">
+            <EntityTypeMapping TypeName="OtelYonetimiDbModel.EksikMesaiKayitlari">
+              <MappingFragment StoreEntitySet="EksikMesaiKayitlari">
+                <ScalarProperty Name="EksikMesaiID" ColumnName="EksikMesaiID" />
+                <ScalarProperty Name="PersonelID" ColumnName="PersonelID" />
+                <ScalarProperty Name="EksikMesaiTarihi" ColumnName="EksikMesaiTarihi" />
+                <ScalarProperty Name="EksikSure" ColumnName="EksikSure" />
+                <ScalarProperty Name="KesilisTutari" ColumnName="KesilisTutari" />
+                <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IzinKayitlari">
+            <EntityTypeMapping TypeName="OtelYonetimiDbModel.IzinKayitlari">
+              <MappingFragment StoreEntitySet="IzinKayitlari">
+                <ScalarProperty Name="IzinID" ColumnName="IzinID" />
+                <ScalarProperty Name="PersonelID" ColumnName="PersonelID" />
+                <ScalarProperty Name="IzinTurID" ColumnName="IzinTurID" />
+                <ScalarProperty Name="BaslangicTarihi" ColumnName="BaslangicTarihi" />
+                <ScalarProperty Name="BitisTarihi" ColumnName="BitisTarihi" />
+                <ScalarProperty Name="IzinGunSayisi" ColumnName="IzinGunSayisi" />
+                <ScalarProperty Name="OnayDurumu" ColumnName="OnayDurumu" />
+                <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IzinTurleri">
+            <EntityTypeMapping TypeName="OtelYonetimiDbModel.IzinTurleri">
+              <MappingFragment StoreEntitySet="IzinTurleri">
+                <ScalarProperty Name="IzinTurID" ColumnName="IzinTurID" />
+                <ScalarProperty Name="IzinTurAdi" ColumnName="IzinTurAdi" />
+                <ScalarProperty Name="UcretliMi" ColumnName="UcretliMi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kategoriler">
+            <EntityTypeMapping TypeName="OtelYonetimiDbModel.Kategoriler">
+              <MappingFragment StoreEntitySet="Kategoriler">
+                <ScalarProperty Name="kategori_id" ColumnName="kategori_id" />
+                <ScalarProperty Name="kategori_adi" ColumnName="kategori_adi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Maaslar">
+            <EntityTypeMapping TypeName="OtelYonetimiDbModel.Maaslar">
+              <MappingFragment StoreEntitySet="Maaslar">
+                <ScalarProperty Name="MaasID" ColumnName="MaasID" />
+                <ScalarProperty Name="PersonelID" ColumnName="PersonelID" />
+                <ScalarProperty Name="BrutMaas" ColumnName="BrutMaas" />
+                <ScalarProperty Name="NetMaas" ColumnName="NetMaas" />
+                <ScalarProperty Name="MaasAyi" ColumnName="MaasAyi" />
+                <ScalarProperty Name="MaasYili" ColumnName="MaasYili" />
+                <ScalarProperty Name="OdemeTarihi" ColumnName="OdemeTarihi" />
+                <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Menuler">
+            <EntityTypeMapping TypeName="OtelYonetimiDbModel.Menuler">
+              <MappingFragment StoreEntitySet="Menuler">
+                <ScalarProperty Name="menu_id" ColumnName="menu_id" />
+                <ScalarProperty Name="tarih" ColumnName="tarih" />
+                <ScalarProperty Name="yemek_id" ColumnName="yemek_id" />
+                <ScalarProperty Name="ogun_turu" ColumnName="ogun_turu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MesaiKayitlari">
+            <EntityTypeMapping TypeName="OtelYonetimiDbModel.MesaiKayitlari">
+              <MappingFragment StoreEntitySet="MesaiKayitlari">
+                <ScalarProperty Name="MesaiID" ColumnName="MesaiID" />
+                <ScalarProperty Name="PersonelID" ColumnName="PersonelID" />
+                <ScalarProperty Name="MesaiTurID" ColumnName="MesaiTurID" />
+                <ScalarProperty Name="MesaiTarihi" ColumnName="MesaiTarihi" />
+                <ScalarProperty Name="BaslangicSaati" ColumnName="BaslangicSaati" />
+                <ScalarProperty Name="BitisSaati" ColumnName="BitisSaati" />
+                <ScalarProperty Name="MesaiSuresi" ColumnName="MesaiSuresi" />
+                <ScalarProperty Name="MesaiUcreti" ColumnName="MesaiUcreti" />
+                <ScalarProperty Name="Onaylandi" ColumnName="Onaylandi" />
+                <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MesaiTurleri">
+            <EntityTypeMapping TypeName="OtelYonetimiDbModel.MesaiTurleri">
+              <MappingFragment StoreEntitySet="MesaiTurleri">
+                <ScalarProperty Name="MesaiTurID" ColumnName="MesaiTurID" />
+                <ScalarProperty Name="MesaiTurAdi" ColumnName="MesaiTurAdi" />
+                <ScalarProperty Name="CarpanKatsayi" ColumnName="CarpanKatsayi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Misafirs">
+            <EntityTypeMapping TypeName="OtelYonetimiDbModel.Misafirs">
+              <MappingFragment StoreEntitySet="Misafirs">
+                <ScalarProperty Name="MisafirId" ColumnName="MisafirId" />
+                <ScalarProperty Name="AdSoyad" ColumnName="AdSoyad" />
+                <ScalarProperty Name="TC" ColumnName="TC" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="Adres" ColumnName="Adres" />
+                <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+                <ScalarProperty Name="KimlikFoto1" ColumnName="KimlikFoto1" />
+                <ScalarProperty Name="KimlikFoto2" ColumnName="KimlikFoto2" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Odalar">
+            <EntityTypeMapping TypeName="OtelYonetimiDbModel.Odalar">
+              <MappingFragment StoreEntitySet="Odalar">
+                <ScalarProperty Name="OdaID" ColumnName="OdaID" />
+                <ScalarProperty Name="Kat" ColumnName="Kat" />
+                <ScalarProperty Name="OdaNumarasi" ColumnName="OdaNumarasi" />
+                <ScalarProperty Name="OdaTuru" ColumnName="OdaTuru" />
+                <ScalarProperty Name="GecelikFiyat" ColumnName="GecelikFiyat" />
+                <ScalarProperty Name="KisiSayisi" ColumnName="KisiSayisi" />
+                <ScalarProperty Name="Durum" ColumnName="Durum" />
+                <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Personel">
+            <EntityTypeMapping TypeName="OtelYonetimiDbModel.Personel">
+              <MappingFragment StoreEntitySet="Personel">
+                <ScalarProperty Name="PersonelID" ColumnName="PersonelID" />
+                <ScalarProperty Name="TCKimlikNo" ColumnName="TCKimlikNo" />
+                <ScalarProperty Name="Adi" ColumnName="Adi" />
+                <ScalarProperty Name="Soyadi" ColumnName="Soyadi" />
+                <ScalarProperty Name="DogumTarihi" ColumnName="DogumTarihi" />
+                <ScalarProperty Name="Cinsiyet" ColumnName="Cinsiyet" />
+                <ScalarProperty Name="Adres" ColumnName="Adres" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="IseBaslamaTarihi" ColumnName="IseBaslamaTarihi" />
+                <ScalarProperty Name="IstenAyrilmaTarihi" ColumnName="IstenAyrilmaTarihi" />
+                <ScalarProperty Name="PozisyonID" ColumnName="PozisyonID" />
+                <ScalarProperty Name="AktifMi" ColumnName="AktifMi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PersonelVardiyalari">
+            <EntityTypeMapping TypeName="OtelYonetimiDbModel.PersonelVardiyalari">
+              <MappingFragment StoreEntitySet="PersonelVardiyalari">
+                <ScalarProperty Name="VardiyaID" ColumnName="VardiyaID" />
+                <ScalarProperty Name="PersonelID" ColumnName="PersonelID" />
+                <ScalarProperty Name="VardiyaTurID" ColumnName="VardiyaTurID" />
+                <ScalarProperty Name="VardiyaTarihi" ColumnName="VardiyaTarihi" />
+                <ScalarProperty Name="DurumNotu" ColumnName="DurumNotu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pozisyonlar">
+            <EntityTypeMapping TypeName="OtelYonetimiDbModel.Pozisyonlar">
+              <MappingFragment StoreEntitySet="Pozisyonlar">
+                <ScalarProperty Name="PozisyonID" ColumnName="PozisyonID" />
+                <ScalarProperty Name="PozisyonAdi" ColumnName="PozisyonAdi" />
+                <ScalarProperty Name="DepartmanID" ColumnName="DepartmanID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rezervasyons">
+            <EntityTypeMapping TypeName="OtelYonetimiDbModel.Rezervasyons">
+              <MappingFragment StoreEntitySet="Rezervasyons">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="MisafirId" ColumnName="MisafirId" />
+                <ScalarProperty Name="OdaId" ColumnName="OdaId" />
+                <ScalarProperty Name="BaslangicTarihi" ColumnName="BaslangicTarihi" />
+                <ScalarProperty Name="BitisTarihi" ColumnName="BitisTarihi" />
+                <ScalarProperty Name="KisiSayisi" ColumnName="KisiSayisi" />
+                <ScalarProperty Name="Durum" ColumnName="Durum" />
+                <ScalarProperty Name="Fiyat" ColumnName="Fiyat" />
+                <ScalarProperty Name="OdaNumarasi" ColumnName="OdaNumarasi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SigortaBilgileri">
+            <EntityTypeMapping TypeName="OtelYonetimiDbModel.SigortaBilgileri">
+              <MappingFragment StoreEntitySet="SigortaBilgileri">
+                <ScalarProperty Name="SigortaID" ColumnName="SigortaID" />
+                <ScalarProperty Name="PersonelID" ColumnName="PersonelID" />
+                <ScalarProperty Name="SigortaNo" ColumnName="SigortaNo" />
+                <ScalarProperty Name="BaslangicTarihi" ColumnName="BaslangicTarihi" />
+                <ScalarProperty Name="BitisTarihi" ColumnName="BitisTarihi" />
+                <ScalarProperty Name="SigortaTuru" ColumnName="SigortaTuru" />
+                <ScalarProperty Name="AylikPrim" ColumnName="AylikPrim" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Urunler">
+            <EntityTypeMapping TypeName="OtelYonetimiDbModel.Urunler">
+              <MappingFragment StoreEntitySet="Urunler">
+                <ScalarProperty Name="urun_id" ColumnName="urun_id" />
+                <ScalarProperty Name="urun_adi" ColumnName="urun_adi" />
+                <ScalarProperty Name="kategori_id" ColumnName="kategori_id" />
+                <ScalarProperty Name="stok_miktari" ColumnName="stok_miktari" />
+                <ScalarProperty Name="birim" ColumnName="birim" />
+                <ScalarProperty Name="son_kullanma_tarihi" ColumnName="son_kullanma_tarihi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VardiyaTurleri">
+            <EntityTypeMapping TypeName="OtelYonetimiDbModel.VardiyaTurleri">
+              <MappingFragment StoreEntitySet="VardiyaTurleri">
+                <ScalarProperty Name="VardiyaTurID" ColumnName="VardiyaTurID" />
+                <ScalarProperty Name="VardiyaAdi" ColumnName="VardiyaAdi" />
+                <ScalarProperty Name="BaslangicSaati" ColumnName="BaslangicSaati" />
+                <ScalarProperty Name="BitisSaati" ColumnName="BitisSaati" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Yemek_Hazirlama">
+            <EntityTypeMapping TypeName="OtelYonetimiDbModel.Yemek_Hazirlama">
+              <MappingFragment StoreEntitySet="Yemek_Hazirlama">
+                <ScalarProperty Name="hazirlama_id" ColumnName="hazirlama_id" />
+                <ScalarProperty Name="yemek_id" ColumnName="yemek_id" />
+                <ScalarProperty Name="adet" ColumnName="adet" />
+                <ScalarProperty Name="hazirlama_tarihi" ColumnName="hazirlama_tarihi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Yemek_Malzemeleri">
+            <EntityTypeMapping TypeName="OtelYonetimiDbModel.Yemek_Malzemeleri">
+              <MappingFragment StoreEntitySet="Yemek_Malzemeleri">
+                <ScalarProperty Name="yemek_id" ColumnName="yemek_id" />
+                <ScalarProperty Name="urun_id" ColumnName="urun_id" />
+                <ScalarProperty Name="miktar" ColumnName="miktar" />
+                <ScalarProperty Name="birim" ColumnName="birim" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Yemekler">
+            <EntityTypeMapping TypeName="OtelYonetimiDbModel.Yemekler">
+              <MappingFragment StoreEntitySet="Yemekler">
+                <ScalarProperty Name="yemek_id" ColumnName="yemek_id" />
+                <ScalarProperty Name="yemek_adi" ColumnName="yemek_adi" />
+                <ScalarProperty Name="ogun_turu" ColumnName="ogun_turu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
